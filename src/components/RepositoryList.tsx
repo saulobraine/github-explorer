@@ -4,22 +4,25 @@ import { RepositoryItem } from "./RepositoryItem";
 
 import '../styles/repositories.scss';
 
-// https://api.github.com/users/saulobraine/repos
+interface Repository {
+  id: number;
+  name: string;
+  description: string;
+  html_url: string;
+}
 
 export function RepositoryList() {
 
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
   useEffect(() => {
     fetch('https://api.github.com/users/saulobraine/repos')
       .then(response => response.json())
-      .then(data => setRepositories(data))
-
-    console.log(repositories);
-  }, [])
+      .then(data => setRepositories(data));
+  }, []);
 
   return (
-    <section className="repository-list">
+    <main className="repository-list">
       <h1>Lista de Repositórios: <small>@saulobraine</small></h1>
       <ul>
         {repositories.map(repository =>
@@ -27,6 +30,6 @@ export function RepositoryList() {
         )}
       </ul>
 
-    </section>
+    </main>
   )
 }
