@@ -12,6 +12,14 @@ main.repository-list {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 
+    @media screen and (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr)
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr
+    }
+
     li {
       padding: 25px;
       box-shadow: 0 0 5px 0px rgba(255,255,255, 0.25);
@@ -54,4 +62,6 @@ main.repository-list {
       }
     }
   }
+
+  
 }
